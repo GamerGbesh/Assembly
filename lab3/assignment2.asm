@@ -69,7 +69,7 @@ printB:
     la $a0, matrixB
     jal matrix_print
     j menu_loop
-
+    
 addAB:
     la $a0, matrixA
     la $a1, matrixB
@@ -137,13 +137,14 @@ input_done:
 # Modified: $t0,$t1,$t2
 ############################################################
 matrix_print:
+    move $t5, $a0          # save base address — $a0 is clobbered by syscalls below
     li $t0, 0
 
 print_loop:
     beq $t0, 9, print_done
 
     sll $t1, $t0, 2
-    add $t1, $a0, $t1
+    add $t1, $t5, $t1      # use saved base address instead of $a0
     lw $a1, 0($t1)
 
     li $v0, 1

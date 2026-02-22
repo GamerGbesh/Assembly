@@ -4,29 +4,29 @@
 .text
 .globl main
 main:
-# Push 5th and 6th parameters onto stack
-addi $sp, $sp, -8
-li $t0, 12 # e = 12
-sw $t0, 4($sp)
-li $t1, 18 # f = 18
-sw $t1, 0($sp)
-# Load first 4 parameters
-li $a0, 6 # a = 6
-li $a1, 8 # b = 8
-li $a2, 10 # c = 10
-li $a3, 14 # d = 14
-# Call procedure
-jal average_six
-# Clean up stack
-addi $sp, $sp, 8
-# Print result
-move $t0, $v0
-li $v0, 1
-move $a0, $t0
-syscall
-# Exit
-li $v0, 10
-syscall
+    # Push 5th and 6th parameters onto stack
+    addi $sp, $sp, -8
+    li $t0, 12 # e = 12
+    sw $t0, 4($sp)
+    li $t1, 18 # f = 18
+    sw $t1, 0($sp)
+    # Load first 4 parameters
+    li $a0, 6 # a = 6
+    li $a1, 8 # b = 8
+    li $a2, 10 # c = 10
+    li $a3, 14 # d = 14
+    # Call procedure
+    jal average_six
+    # Clean up stack
+    addi $sp, $sp, 8
+    # Print result
+    move $t0, $v0
+    li $v0, 1
+    move $a0, $t0
+    syscall
+    # Exit
+    li $v0, 10
+    syscall
 
 average_six:
 

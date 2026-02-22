@@ -1,10 +1,10 @@
 # Recursive Fibonacci with call counter
 
 .data
-result_msg:   .asciiz "Fibonacci result: "
-calls_msg:    .asciiz "\nRecursive calls: "
-newline:      .asciiz "\n"
-call_count:   .word 0          # global counter
+    result_msg:   .asciiz "Fibonacci result: "
+    calls_msg:    .asciiz "\nRecursive calls: "
+    newline:      .asciiz "\n"
+    call_count:   .word 0          # global counter
 
 .text
 .globl main
