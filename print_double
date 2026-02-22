@@ -1,0 +1,13 @@
+.data
+	 float_num: .double 3.142
+
+.text 
+.globl main
+main:
+	l.d $f12, float_num
+	li $v0, 3
+	syscall
+	
+	li $v0 10
+	syscall
+	

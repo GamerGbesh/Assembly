@@ -1,0 +1,87 @@
+.data
+	float_one: .float 2.22222
+	float_two: .float 3.123
+	add_msg: .asciiz "Addition\n"
+	mult_msg: .asciiz "Multiplication\n"
+	sub_msg: .asciiz "Subtraction\n"
+	div_msg: .asciiz "Division\n"
+	newline: .asciiz "\n"
+	n1: .asciiz "Float 1 :"
+	n2: .asciiz "Float 2 :"
+.text
+	l.s $f0 float_one
+	l.s $f1 float_two
+.globl main
+main:
+	la $a0 n1
+	li $v0 4
+	syscall
+	
+	mov.s $f12 $f0
+	li $v0 2
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
+	
+	la $a0 n2
+	li $v0 4
+	syscall
+	
+	mov.s $f12 $f1
+	li $v0 2
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
+	
+	# Addition
+	la $a0 add_msg
+	li $v0 4
+	syscall
+	
+	add.s $f12 $f0 $f1
+	li $v0 2
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
+	
+	# Multiplication
+	la $a0 mult_msg
+	li $v0 4
+	syscall
+	
+	mul.s  $f12 $f0 $f1
+	li $v0 2
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
+	
+	# Subtraction
+	la $a0 sub_msg
+	li $v0 4
+	syscall
+	
+	sub.s  $f12 $f0 $f1
+	li $v0 2
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
+	
+	# Division
+	la $a0 div_msg
+	li $v0 4
+	syscall
+	
+	div.s  $f12 $f0 $f1
+	li $v0 2
+	syscall
+	

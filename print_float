@@ -1,0 +1,12 @@
+.data
+	pi: .float 3.14 #Store pi values
+.text
+.globl main
+
+main:
+	l.d $f12 pi
+	li $v0 2
+	syscall
+	
+	li $v0 10
+	syscall

@@ -1,0 +1,37 @@
+.data
+	newline: .asciiz "\n"
+.text
+.globl main
+
+main:
+	li $t0 0
+	li $t2 0
+	li $t1 20
+loop:
+	bne  $t2 $t1 increment
+
+	j end_program
+
+increment:
+	rem $t4 $t2 2
+	bnez $t4 loop
+	jal print_num
+	addi $t2 $t2 1
+	
+	j loop
+
+print_num:
+	move $a0 $t2
+	li $v0 1
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
+	
+	jr $ra
+	
+
+end_program:
+	li $v0 10
+	syscall

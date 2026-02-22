@@ -1,0 +1,47 @@
+.data
+	single_msg: .asciiz "This is a single precision number: "
+	double_msg: .asciiz "This is a double precision number: "
+	int_msg: .asciiz "This is an integer: "
+	newline: .asciiz "\n"
+	
+	single: .float 4.54
+	double: .double 5.233
+.text
+.globl main
+
+main:
+	la $a0 single_msg
+	li $v0 4
+	syscall
+	
+	l.s $f12 single
+	li $v0 2
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
+	
+	la $a0 double_msg
+	li $v0 4
+	syscall
+	
+	l.d $f12 double
+	li $v0 3
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
+	
+	la $a0 int_msg
+	li $v0 4
+	syscall
+	
+	li $a0 50
+	li $v0 1
+	syscall
+	
+	la $a0 newline
+	li $v0 4
+	syscall
